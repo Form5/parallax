@@ -14,9 +14,7 @@ The demo code can be found in this repository and following is an article I wrot
 
 ### TL;DR version
 
-[Asparagus](#asparagus) is a better technique for Parallax scrolling. It uses translate3d and a single ticking requestAnimationFrame method that will make your parallax scroll much lighter and smoother.
-
-[Check Asparagus out here](#asparagus)
+This is the search for better parallax scrolling. The best approach uses translate3d and a single ticking requestAnimationFrame method that will make your parallax scroll much lighter and smoother.
 
 
 ### How do we measure performance?
@@ -30,7 +28,7 @@ Doing framerate optimizations is pretty much a limbo dance competition, touch th
 
 ### The demonstration
 
-Following are three examples of different parallax techniques, the first two being common solutions and then we present Asparagus.
+Following are three examples of different parallax techniques, the first two being common solutions and then we present the third method — Asparagus.
 
 The (perhaps much too familiar) hero image is a very common design pattern these days, being a default with popular front-end frameworks like Twitter Bootstrap and Zurb's Foundation. Love it or hate it, it serves as a great example for showing the difference in performance between the most common parallax techniques and Asparagus.
 
