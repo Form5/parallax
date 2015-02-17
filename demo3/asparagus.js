@@ -45,7 +45,7 @@
 
   // Update scroll value and request tick
   var doScroll = function() {
-    lastScrollY = window.scrollY;
+    lastScrollY = window.pageYOffset;
     requestTick();
   };
 

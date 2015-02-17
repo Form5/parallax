@@ -1,6 +1,6 @@
 updatePosition = function() {
   var heroBg = document.getElementById('hero-bg');
-  var newPos = window.scrollY / 2;
+  var newPos = window.pageYOffset / 2;
   translateY(heroBg, newPos);
 };
 

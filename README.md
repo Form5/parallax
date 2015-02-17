@@ -62,7 +62,7 @@ This markup is nothing out of the ordinary and the actual parallax functionality
 ```javascript
 var updatePosition = function() {
   var hero = document.getElementById('hero');
-  var scrollPos = window.scrollY / 2;
+  var scrollPos = window.pageYOffset / 2;
   hero.style['background-position'] = '50% ' + scrollPos + 'px';
 };
 
@@ -93,7 +93,7 @@ Here we'll actually be showing two different methods (but both share the same ma
   </div>
 ```
 
-On the CSS side, we're absolute positioning the background element. 
+On the CSS side, we're absolute positioning the background element.
 
 ``` css
 #hero {
@@ -122,7 +122,7 @@ On the other hand, we can make use of the `translateY` attribute. The latter del
 ```javascript
 updatePosition = function() {
   var heroBg = document.getElementById('hero-bg');
-  var newPos = window.scrollY / 2;
+  var newPos = window.pageYOffset / 2;
 
   translateY(heroBg, newPos);
   // We could use relative top positioning here instead
@@ -152,7 +152,7 @@ The `translateY` performance for this technique is much better than the one we s
 
 ### Technique 3: Asparagus
 
-We could settle for the other techniques but Asparagus is where we [Bump the Lamp](http://www.helloerik.com/bump-the-lamp-the-reason-for-caring)". 
+We could settle for the other techniques but Asparagus is where we [Bump the Lamp](http://www.helloerik.com/bump-the-lamp-the-reason-for-caring)".
 
 'But why?' you may ask, feeling that the other techniques are good enough. We've discussed the individual performance issues above but lets focus on the two general problems. First, as the performance profiling indicated (the green bars, remember), the GPU isn't being utilized nearly as much as it could with the most common methods. Secondly, calculations are being done at a **much higher** rate than is actually needed, causing constant reflow and repaint in the browser.
 
@@ -162,7 +162,7 @@ To limit the rate at which calculation is being done we'll be using the awesome 
 
 The markup is the same as we used above in technique 2 but we'll be using `translate3d(x,y,z)` instead of `translateY(y)` for the actual translation of the background element. This will do wonders for our rendering even though we're only going to be using the y paramter of `translate3d` with 0px given for the x and z axis.
 
-So lets take a look at what's happening under the hood. 
+So lets take a look at what's happening under the hood.
 
 We start off by attaching a simple function to the window's scroll event:
 ``` javascript
@@ -173,7 +173,7 @@ var lastScrollY = 0,
 
 // Update scroll value and request tick
 var doScroll = function() {
-  lastScrollY = window.scrollY;
+  lastScrollY = window.pageYOffset;
   requestTick();
 };
 
@@ -207,7 +207,7 @@ var updatePosition = function() {
   ticking = false;
 };
 
-// Translates an element on the Y axis using translate3d 
+// Translates an element on the Y axis using translate3d
 // to ensure that the rendering is done by the GPU
 var translateY3d = function(elm, value) {
   var translate = 'translate3d(0px,' + value + 'px, 0px)';
